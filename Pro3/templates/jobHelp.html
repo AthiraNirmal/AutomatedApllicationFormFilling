@@ -1,0 +1,544 @@
+<!-- <html>
+    <h1>4Chan Analysis</h1>
+    <p> Visited at {{ date }} </p>
+    <button type="button" onclick="window.location.href = 'response'">Democrats</button>
+    <button type="button" onclick="window.location.href = 'response'">Republics</button>
+</html> -->
+
+
+<!-- http://127.0.0.1:5000/ -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<style>
+    input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body class="w3-light-grey">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>JOB HELPER</b></h1>
+</header>
+
+<!-- Blog entries -->
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="{{url_for('static', filename='appli.jpg')}}" alt="Nature" style="width:100%; height:300px">
+    <div class="w3-container">
+      <h3><b>FILL THE FORM</b></h3>
+    </div>
+    <div class="w3-container">
+      <p>Fill out the following information and proceed with your job application in a much more simpler way!</p>
+    </div>
+
+<div class="container">
+    <form method="post">
+      <div class="row">
+        <div class="col-25">
+          <label for="username">Username/ Email address</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="username" name="username" value="{{request.form['username']}}" placeholder="Username/ Email address">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">First Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="fname" name="firstname" value="{{request.form['firstname']}}" placeholder="Your name..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Last Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="lastname"  value="{{ request.form['lastname'] }}" placeholder="Your last name..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="add">Address</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="add" name="address" value="{{ request.form['address'] }}" placeholder="Your Address..">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="city">City</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="city" name="city" value="{{ request.form['city'] }}" placeholder="Your City..">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="city">State</label>
+        </div>
+        <div class="col-75">
+          <select name = "state" id="state">
+            <option value="">Please Select</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="American Samoa">American Samoa</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="Armed Forces Americas">Armed Forces Americas</option>
+            <option value="Armed Forces Europe">Armed Forces Europe</option>
+            <option value="Armed Forces Pacific">Armed Forces Pacific</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="District of Columbia">District of Columbia</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Guam">Guam</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="UPennsylvania">Pennsylvania</option>
+            <option value="Puerto Rico">Puerto Rico</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+
+        </div>
+      </div>
+
+
+<div class="row">
+        <div class="col-25">
+          <label for="pin">Pincode</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="pin" name="pin" value="{{ request.form['pin'] }}" placeholder=" ">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="email">Email</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="email" name="email" value="{{ request.form['email'] }}"  placeholder="example: yourname@domain.com">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="phone">Phone Number</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="phone" name="phone" value="{{ request.form['phone'] }}"  placeholder="Enter your contact information">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="phone">Phone Device Type</label>
+        </div>
+        <div class="col-75">
+          <select name = "phoneType" id="phoneType">
+            <option value="">Please Select</option>
+            <option value="Fax">Fax</option>
+            <option value="Landline">Landline</option>
+            <option value="Mobile">Mobile</option>
+            <option value="Other">Other</option>
+          </select>
+
+        </div>
+      </div>
+
+
+
+
+      <p>Mention your most recent job experience </p>
+      <div class="row">
+        <div class="col-25">
+          <label for="exp">Job Title</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="exp" name="exp" value="{{ request.form['exp'] }}"  placeholder="Most recent experience">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="company">Company</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="company" name="company" value="{{ request.form['company'] }}"  placeholder="Most recent experience">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="from">From</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="from" name="from" value="{{ request.form['from'] }}"  placeholder="Start date: MM/DD/YYYY ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="to">To</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="to" name="to" value="{{ request.form['to'] }}"  placeholder="End date: MM/DD/YYYY or 'Currently work here' ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="location">Location</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="location" name="location" value="{{ request.form['location'] }}"  placeholder="Enter job location">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="desc">Description</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="desc" name="desc" value="{{ request.form['desc'] }}"  placeholder="Enter job description">
+        </div>
+      </div>
+
+      <p>Mention your most recent Education </p>
+      <div class="row">
+        <div class="col-25">
+          <label for="university">School/University</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="university" name="university" value="{{ request.form['university'] }}"  placeholder="Most recent education">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="degree">Degree</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="degree" name="degree" value="{{ request.form['degree'] }}"  placeholder="Enter your degree: Eg: Masters/MS/BTech">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="field">Field of Study</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="field" name="field" value="{{ request.form['field'] }}"  placeholder="  ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="gpa">GPA</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="gpa" name="gpa" value="{{ request.form['gpa'] }}"  placeholder=" GPA out of 4 ">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="languages">Languages</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="languages" name="languages" value="{{ request.form['languages'] }}"  placeholder=" Languages">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="facebook">Facebook</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="facebook" name="facebook" value="{{ request.form['facebook'] }}"  placeholder=" Share you facebook Link">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="linkedin">LinkedIn</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="linkedin" name="linkedin" value="{{ request.form['linkedin'] }}"  placeholder="Share your LinkedIn Link">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="auth">Are you legally authorized to work? </label>
+        </div>
+        <div class="col-75">
+          <select name ="auth" id="auth">
+            <option value="">Please Select</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+         
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="sponsorship">Do you now or in the future, require immigration sponsorship for work authorization (for example, H-1B status)?</label>
+        </div>
+        <div class="col-75">
+          <select name ="sponsorship" id="sponsorship">
+            <option value="">Please Select</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="relocation"> Are you open to relocation?</label>
+        </div>
+        <div class="col-75">
+          <select name ="relocation" id="relocation">
+            <option value="">Please Select</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="loc"> What is your current location?</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="loc" name="loc" value="{{ request.form['loc'] }}"  placeholder=".....">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="agreement"> Do you currently have a non-compete or non- solicitation agreement?</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="agreement" name="agreement" value="{{ request.form['agreement'] }}"  placeholder=".....">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="salary"> What are your salary expectations (total pay, base, bonus, commission, etc.)?</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="salary" name="salary" value="{{ request.form['salary'] }}"  placeholder=".....">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="travel">What percentage of travel you are open to in this role?</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="travel" name="travel" value="{{ request.form['travel'] }}"  placeholder=".....">
+        </div>
+      </div>
+
+      <p> APPLICANT VOLUNTARY SELF-IDENTIFICATION FORM- GENDER AND RACE/ETHNICITY </p>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="gender">Please select your gender</label>
+        </div>
+        <div class="col-75">
+          <select name ="gender" id="gender" >
+            <option value="">Please Select</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Choose not to disclose">Choose not to disclose</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="race">Please mention your race</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="race" name="race" value="{{ request.form['race'] }}"  placeholder=" ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="veteran">Please confirm your veteran status</label>
+        </div>
+        <div class="col-75">
+          <select name = "veteran" id="veteran">
+            <option value="">Please Select</option>
+            <option value="I identify as one or more of the classifications of protected veterans listed above">I identify as one or more of the classifications of protected veterans listed above</option>
+            <option value="I identify as a veteran, Just not a protected veteran">I identify as a veteran, Just not a protected veteran</option>
+            <option value="I am not a veteran">I am not a veteran</option>
+            <option value="I do not wish to self-identify">I do not wish to self-identify</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="disability">Do you have a disability?</label>
+        </div>
+        <div class="col-75">
+          <select name = "disability" id="disability">
+            <option value="">Please Select</option>
+            <option value="YES, I HAVE A DISABILITY (or previously had a disability)">YES, I HAVE A DISABILITY (or previously had a disability)</option>
+            <option value="NO, I DON’T HAVE A DISABILITY">NO, I DON’T HAVE A DISABILITY</option>
+            <option value="I DON’T WISH TO ANSWER"> I DON’T WISH TO ANSWER</option>
+          </select>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="row">
+        <div class="col-25">
+          <label for="url">Job URL</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="url" name="url" value="{{ request.form['url'] }}"  placeholder="Enter the URL for the job you want to apply">
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- <button type="button" onclick="window.location.href = '/'">SUBMIT</button> -->
+        <input type="submit" value="Submit" onclick="window.location.href = 'jobHelp'">
+      </div>
+      <div class="row">
+        <button type="button" onclick="window.location.href = 'fill_form'">NEXT</button>
+        <!-- <input type="submit" value="Submit" onclick="window.location.href = 'fill_form'"> -->
+      </div>
+    </form>
+  </div>
+  
+  
+
+
+  </div>
+  <hr>

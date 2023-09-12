@@ -1,0 +1,16 @@
+{% block pagecontent %}
+    <h1 style="color: blue;">Republics - POSTS</h1>
+    <p>Check out some posts on Republics</p>
+    <ul>
+    {% for r in data %}
+        <li><p>{{ r }}</p></li>
+    {% endfor %}
+    </ul>
+    <body>
+        <form action="/republic" method="POST">
+            {{form.csrf_token}}
+            {{form.ids}}
+            {{form.submit}}
+        </form>
+    </body>
+{% endblock %}
